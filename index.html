@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amwaj Apartments — v6</title>
+<title>Amwaj Apartments — v7</title>
 <style>
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -27,27 +27,26 @@
   .bg::after{content:""; position:absolute; inset:0;
     background:radial-gradient(1100px 520px at 50% 14%, rgba(255,255,255,.7), rgba(255,255,255,.15) 60%, rgba(0,0,0,.18) 100%)}
 
-  /* ===== Top title card (compact) ===== */
+  /* ===== Title card ===== */
   .top{
     display:grid; place-items:center; padding:32px 16px 100px; /* место для dock снизу */
   }
   .title{
     background:rgba(255,255,255,.9); border:1px solid #e5e7eb; border-radius:20px;
     padding:18px 22px; box-shadow:0 18px 40px rgba(15,23,42,.18);
-    backdrop-filter:saturate(1.1) blur(2px); max-width:min(900px,92vw)
+    backdrop-filter:saturate(1.1) blur(2px); max-width:min(900px,92vw); text-align:center;
   }
   h1{margin:0; font-size:clamp(26px,4.2vw,44px)}
-  .sub{margin:6px 0 0; color:#6b7280; font-size:14px; text-align:center}
+  .sub{margin:6px 0 0; color:#6b7280; font-size:14px}
 
-  /* ===== Bottom dock (continue + langs) ===== */
+  /* ===== Bottom dock (langs only) ===== */
   .dock{
     position:fixed; left:50%; bottom:20px; transform:translateX(-50%);
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    background:rgba(255,255,255,.9); border:1px solid #e5e7eb;
-    padding:12px 16px; border-radius:20px; box-shadow:0 16px 36px rgba(15,23,42,.22);
-    backdrop-filter:saturate(1.1) blur(2px); width:min(96vw,980px)
+    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+    background:rgba(255,255,255,.88); border:1px solid #e5e7eb;
+    padding:10px 14px; border-radius:20px; box-shadow:0 14px 32px rgba(15,23,42,.2);
+    backdrop-filter:saturate(1.1) blur(2px); width:min(94vw,900px);
   }
-  .langs{display:flex; flex-wrap:wrap; justify-content:center; gap:10px}
   .lang{
     display:inline-flex; align-items:center; justify-content:center;
     padding:10px 16px; border-radius:999px; text-decoration:none; font-weight:700;
@@ -57,10 +56,6 @@
   .lang:hover,.lang:focus-visible{
     background:#2563eb; color:#fff; border-color:#2563eb;
     transform:translateY(-1px); box-shadow:0 10px 22px rgba(37,99,235,.22); outline:none
-  }
-  .continue{
-    padding:10px 18px; border-radius:12px; font-weight:700;
-    text-decoration:none; background:#10b981; color:#fff; border:1px solid #0ea371;
   }
 </style>
 </head>
@@ -75,7 +70,7 @@
     <img src="IMG_7457.jpeg" alt="">
   </div>
 
-  <!-- Top title -->
+  <!-- Title -->
   <header class="top">
     <div class="title">
       <h1>Welcome to Amwaj Apartments 🏝</h1>
@@ -85,28 +80,11 @@
 
   <!-- Dock at bottom -->
   <div class="dock">
-    <a class="continue" id="cta" href="en.html">Start in English</a>
-    <div class="langs">
-      <a class="lang" href="en.html" data-lang="en">English</a>
-      <a class="lang" href="ru.html" data-lang="ru">Русский</a>
-      <a class="lang" href="de.html" data-lang="de">Deutsch</a>
-      <a class="lang" href="it.html" data-lang="it">Italiano</a>
-      <a class="lang" href="ar.html" data-lang="ar">العربية</a>
-    </div>
+    <a class="lang" href="en.html">English</a>
+    <a class="lang" href="ru.html">Русский</a>
+    <a class="lang" href="de.html">Deutsch</a>
+    <a class="lang" href="it.html">Italiano</a>
+    <a class="lang" href="ar.html">العربية</a>
   </div>
-
-  <script>
-    // Save language
-    document.querySelectorAll('.lang').forEach(a=>{
-      a.addEventListener('click', ()=> localStorage.setItem('langPage', a.getAttribute('href')));
-    });
-    const saved = localStorage.getItem('langPage');
-    const cta = document.getElementById('cta');
-    if (saved && saved.endsWith('.html')) {
-      cta.href = saved;
-      const label = { 'en.html':'English','ru.html':'Русский','de.html':'Deutsch','it.html':'Italiano','ar.html':'العربية' }[saved] || 'English';
-      cta.textContent = 'Continue: ' + label;
-    }
-  </script>
 </body>
 </html>
