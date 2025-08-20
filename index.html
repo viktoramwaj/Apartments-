@@ -115,5 +115,31 @@
 
       <nav class="langs" aria-label="Languages">
         <a class="lang" href="en.html" data-lang="en" aria-label="English">English</a>
-        <a class="lang" href="ru.html" data-lang="ru" aria-label="Р
+        <a class="lang" href="ru.html" data-lang="ru" aria-label="Русский">Русский</a>
+        <a class="lang" href="de.html" data-lang="de" aria-label="Deutsch">Deutsch</a>
+        <a class="lang" href="it.html" data-lang="it" aria-label="Italiano">Italiano</a>
+        <a class="lang" href="ar.html" data-lang="ar" aria-label="العربية">العربية</a>
+      </nav>
 
+      <section class="card">
+        <p>Find everything you need for a comfortable stay: Wi‑Fi, pools, beach access, nearby places, excursions, and transport.</p>
+        <a class="cta" id="cta" href="en.html">Start in English</a>
+        <p class="tip">Tip: we’ll remember your language on this device.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Remember last opened language + update CTA
+    document.querySelectorAll('.lang').forEach(a=>{
+      a.addEventListener('click', ()=> localStorage.setItem('langPage', a.getAttribute('href')));
+    });
+    const saved = localStorage.getItem('langPage');
+    if (saved && saved.endsWith('.html')) document.getElementById('cta').href = saved;
+
+    // Preload next images a bit to reduce flashing
+    const imgs = Array.from(document.querySelectorAll('.bg img'));
+    imgs.forEach(img => { if ('decode' in img) img.decode().catch(()=>{}); });
+  </script>
+</body>
+</html>
