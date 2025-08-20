@@ -1,63 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Apartments</title>
+  <meta name="description" content="Apartments — landing with language switcher (EN, RU, DE, IT, AR)">
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-    .lang-btn { margin: 5px; padding: 10px 20px; cursor: pointer; }
-    .hidden { display: none; }
+    :root {
+      --bg: #f7f9fc; --card: #ffffff; --text: #1f2937; --muted: #6b7280;
+      --primary: #2563eb; --primary-700: #1d4ed8; --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);
+      background: radial-gradient(1200px 600px at 80% -100px,#e9efff 0,transparent 60%), radial-gradient(900px 500px at -10% -80px,#e8f7ff 0,transparent 55%), var(--bg);}
+    .wrap{min-height:100%;display:grid;place-items:center;padding:32px 20px}
+    .card{width:min(880px,100%);background:var(--card);border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04);padding:36px 28px}
+    h1{margin:0 0 10px;font-size:clamp(26px,3vw+10px,38px);letter-spacing:.3px}
+    .sub{margin:0 0 20px;color:var(--muted);font-size:15px}
+    .langbar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}
+    .langbar button{appearance:none;border:1px solid #d6dae1;background:#fff;padding:9px 14px;border-radius:999px;font-size:14px;cursor:pointer;transition:.15s ease}
+    .langbar button:hover{border-color:#c7ccd5;transform:translateY(-1px)}
+    .langbar button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .content p{font-size:17px;line-height:1.65;margin:0 0 14px}
+    .cta{display:inline-block;margin-top:8px;padding:11px 16px;background:var(--primary);color:#fff;border-radius:10px;text-decoration:none;font-weight:600}
+    .cta:hover{background:var(--primary-700)}
+    footer{margin-top:22px;color:var(--muted);font-size:12px}
+    [dir="rtl"] .content p{text-align:right}
   </style>
 </head>
 <body>
-  <h1 id="title">Welcome to Apartments 🏠</h1>
-  <p id="subtitle">Choose your language:</p>
+  <div class="wrap">
+    <main class="card">
+      <h1 id="title">Welcome to Apartments 🏠</h1>
+      <p class="sub" id="subtitle">Choose your language:</p>
 
-  <!-- Кнопки переключения языков -->
-  <button class="lang-btn" data-lang="en">English</button>
-  <button class="lang-btn" data-lang="ru">Русский</button>
-  <button class="lang-btn" data-lang="de">Deutsch</button>
-  <button class="lang-btn" data-lang="fr">Français</button>
+      <nav class="langbar" aria-label="Language selector">
+        <button type="button" data-lang="en" class="active">English</button>
+        <button type="button" data-lang="ru">Русский</button>
+        <button type="button" data-lang="de">Deutsch</button>
+        <button type="button" data-lang="it">Italiano</button>
+        <button type="button" data-lang="ar">العربية</button>
+      </nav>
 
-  <p id="text"></p>
+      <section class="content" id="content" tabindex="-1" aria-live="polite"></section>
+      <footer id="footnote"></footer>
+    </main>
+  </div>
 
   <script>
-    const texts = {
-      en: "Welcome! This is the English version of the site.",
-      ru: "Добро пожаловать! Это русская версия сайта.",
-      de: "Willkommen! Dies ist die deutsche Version der Website.",
-      fr: "Bienvenue! Ceci est la version française du site."
+    const T = {
+      en: {
+        title:"Welcome to Apartments 🏠",
+        subtitle:"Choose your language:",
+        paragraphs:[
+          "Welcome! Your site is up and running on GitHub Pages.",
+          "This is a simple landing page with a language switcher."
+        ],
+        ctaText:"Learn more",
+        foot:"Tip: your language is stored in your browser (localStorage)."
+      },
+      ru: {
+        title:"Добро пожаловать в Apartments 🏠",
+        subtitle:"Выберите язык:",
+        paragraphs:[
+          "Отлично! Сайт работает на GitHub Pages.",
+          "Это простой лендинг с переключателем языка."
+        ],
+        ctaText:"Узнать больше",
+        foot:"Подсказка: выбранный язык сохраняется в браузере (localStorage)."
+      },
+      de: {
+        title:"Willkommen bei Apartments 🏠",
+        subtitle:"Wählen Sie Ihre Sprache:",
+        paragraphs:[
+          "Super! Ihre Website läuft auf GitHub Pages.",
+          "Dies ist eine einfache Landingpage mit einem Sprachumschalter."
+        ],
+        ctaText:"Mehr erfahren",
+        foot:"Hinweis: Ihre Sprachauswahl wird im Browser gespeichert (localStorage)."
+      },
+      it: {
+        title:"Benvenuti in Apartments 🏠",
+        subtitle:"Scegli la lingua:",
+        paragraphs:[
+          "Ottimo! Il sito è online su GitHub Pages.",
+          "Questa è una semplice landing con selettore della lingua."
+        ],
+        ctaText:"Scopri di più",
+        foot:"Suggerimento: la lingua scelta viene salvata nel browser (localStorage)."
+      },
+      ar: {
+        title:"مرحبًا بكم في الشقق 🏠",
+        subtitle:"اختر اللغة:",
+        paragraphs:[
+          "رائع! موقعك يعمل على GitHub Pages.",
+          "هذه صفحة هبوط بسيطة مع مُبدّل للغة."
+        ],
+        ctaText:"اعرف المزيد",
+        foot:"ملاحظة: يتم حفظ اللغة المختارة في المتصفح (localStorage).",
+        dir:"rtl"
+      }
     };
 
-    const title = document.getElementById("title");
-    const subtitle = document.getElementById("subtitle");
-    const text = document.getElementById("text");
-    const buttons = document.querySelectorAll(".lang-btn");
+    const els = {
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      content: document.getElementById("content"),
+      foot: document.getElementById("footnote"),
+      buttons: Array.from(document.querySelectorAll(".langbar button"))
+    };
 
-    function setLang(lang) {
-      if (lang === "en") {
-        title.textContent = "Welcome to Apartments 🏠";
-        subtitle.textContent = "Choose your language:";
-      } else if (lang === "ru") {
-        title.textContent = "Добро пожаловать в Apartments 🏠";
-        subtitle.textContent = "Выберите язык:";
-      } else if (lang === "de") {
-        title.textContent = "Willkommen bei Apartments 🏠";
-        subtitle.textContent = "Wählen Sie eine Sprache:";
-      } else if (lang === "fr") {
-        title.textContent = "Bienvenue aux Apartments 🏠";
-        subtitle.textContent = "Choisissez votre langue:";
-      }
-      text.textContent = texts[lang];
+    function applyLang(lang){
+      const d = T[lang] || T.en;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = d.dir || "ltr";
+      els.title.textContent = d.title;
+      els.subtitle.textContent = d.subtitle;
+      els.content.innerHTML = "";
+      d.paragraphs.forEach(t=>{
+        const p=document.createElement("p");
+        p.textContent=t;
+        els.content.appendChild(p);
+      });
+      const a=document.createElement("a");
+      a.href="#more"; a.className="cta"; a.textContent=d.ctaText;
+      els.content.appendChild(a);
+      els.foot.textContent = d.foot;
+      els.buttons.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+      localStorage.setItem("site_lang", lang);
+      const url = new URL(location);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null,"",url);
     }
 
-    // Язык по умолчанию — английский
-    setLang("en");
-
-    buttons.forEach(button => {
-      button.addEventListener("click", () => setLang(button.dataset.lang));
-    });
+    els.buttons.forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
+    const fromUrl=new URLSearchParams(location.search).get("lang");
+    const fromStore=localStorage.getItem("site_lang");
+    applyLang(fromUrl || fromStore || "en");
   </script>
 </body>
 </html>
