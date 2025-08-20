@@ -22,25 +22,21 @@
 
     <section class="card">
       <p>Find everything you need for a comfortable stay: Wi‑Fi, pools, beach access, nearby places, excursions, and transport.</p>
-      <a class="cta" href="en.html">Start in English</a>
+      <a class="cta" id="cta" href="en.html">Learn more</a>
     </section>
 
     <p class="tip">Tip: Bookmark the page of your language for quick access.</p>
   </main>
   <script>
-    // Пробуем сразу открыть страницу браузерного языка (только при первом заходе)
-    const saved = localStorage.getItem('langPage');
-    if (!saved) {
-      const m = (navigator.language||'en').slice(0,2).toLowerCase();
-      const map = {en:'en.html',ru:'ru.html',de:'de.html',it:'it.html',ar:'ar.html'};
-      if (map[m]) {
-        localStorage.setItem('langPage', map[m]);
-      }
-    }
-    // Кнопкам добавим сохранение выбора
+    // Сохраняем выбор языка и обновляем ссылку "Learn more"
+    const map = {en:'en.html',ru:'ru.html',de:'de.html',it:'it.html',ar:'ar.html'};
+    const cta = document.getElementById('cta');
+
     document.querySelectorAll('.lang').forEach(a=>{
-      a.addEventListener('click', ()=> localStorage.setItem('langPage', a.getAttribute('href')));
+      a.addEventListener('click', ()=> {
+        localStorage.setItem('langPage', a.getAttribute('href'));
+      });
     });
-  </script>
-</body>
-</html>
+
+    const saved = localStorage.getItem('langPage');
+    if (saved && /^(\w+)\.html$/.test
