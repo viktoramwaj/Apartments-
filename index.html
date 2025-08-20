@@ -1,193 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Apartments — Amwaj</title>
-  <meta name="description" content="Apartments — multilingual landing (EN, RU, DE, IT, AR) with a hero image.">
-  <style>
-    :root{
-      --text:#0f172a; --muted:#64748b;
-      --primary:#2563eb; --primary-700:#1d4ed8; 
-      --card:#ffffff; --bg:#f7f9fc; --radius:16px;
-      /* 1) свой файл: /images/hero.jpg  2) иначе внешний fallback */
-      --hero-url: url('/images/hero.jpg'), 
-                  url('https://images.unsplash.com/photo-1501117716987-2d51d5f4e2ec?auto=format&fit=crop&w=1800&q=80');
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";}
-    body{color:var(--text); background:
-      radial-gradient(1200px 600px at 80% -100px,#e9efff 0,transparent 60%),
-      radial-gradient(900px 500px at -10% -80px,#e8f7ff 0,transparent 55%), var(--bg);}
-
-    /* Header (языковые кнопки) */
-    .topbar{position:fixed; inset:16px 16px auto 16px; display:flex; gap:8px; z-index:10; align-items:center;}
-    .lang{display:flex; gap:8px; flex-wrap:wrap}
-    .pill{appearance:none;border:1px solid #d6dae1;background:#fff;color:#0f172a;
-      padding:8px 14px;border-radius:999px;font-size:14px;cursor:pointer;transition:.15s ease}
-    .pill:hover{border-color:#c7ccd5; transform:translateY(-1px)}
-    .pill.active{background:var(--primary); color:#fff; border-color:var(--primary)}
-
-    /* Hero */
-    .hero{
-      position:relative; min-height:62vh; display:grid; place-items:center;
-      background-image: var(--hero-url);
-      background-size:cover; background-position:center center;
-      border-bottom-left-radius:28px; border-bottom-right-radius:28px; overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,.10);
-    }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
-    }
-    .hero-inner{position:relative; max-width:1000px; padding:80px 20px; text-align:center; color:#fff}
-    .hero h1{margin:0 0 8px; font-size:clamp(28px,4vw,48px); letter-spacing:.3px}
-    .hero p{margin:0; opacity:.9}
-
-    /* Card content */
-    .wrap{display:grid; place-items:center; padding:36px 16px 64px}
-    .card{width:min(960px,100%); background:var(--card); border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04); padding:28px}
-    .lead{margin:0 0 14px; color:var(--muted)}
-    .content p{font-size:17px; line-height:1.7; margin:0 0 14px}
-    .cta{display:inline-block; margin-top:6px; padding:11px 16px; background:var(--primary); color:#fff;
-      border-radius:10px; text-decoration:none; font-weight:600}
-    .cta:hover{background:var(--primary-700)}
-    footer{margin-top:12px; color:var(--muted); font-size:12px}
-
-    /* RTL для арабского */
-    [dir="rtl"] .hero-inner, [dir="rtl"] .content p, [dir="rtl"] .lead{text-align:right}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apartments</title>
+<style>
+  :root{--brand:#2563eb;--muted:#475569}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f8ff}
+  .wrap{max-width:900px;margin:40px auto;padding:24px;background:#fff;border:1px solid #e5e7eb;border-radius:16px}
+  h1{margin:0 0 6px;font-size:clamp(24px,3.2vw,34px)}
+  .sub{margin:0 0 16px;color:var(--muted)}
+  .langs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
+  button.lang{border:1px solid #dbe2f1;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+  button.lang.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .card{background:#f8faff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
+  .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none}
+  .tip{margin-top:14px;color:var(--muted);font-size:12px}
+  /* RTL когда нужен */
+  [dir="rtl"]{direction:rtl}
+</style>
 </head>
 <body>
-  <!-- Language pills -->
-  <div class="topbar">
-    <nav class="lang" aria-label="Language selector">
-      <button class="pill active" data-lang="en">English</button>
-      <button class="pill" data-lang="ru">Русский</button>
-      <button class="pill" data-lang="de">Deutsch</button>
-      <button class="pill" data-lang="it">Italiano</button>
-      <button class="pill" data-lang="ar">العربية</button>
-    </nav>
+  <div class="wrap">
+    <h1 id="t-title">Welcome to Apartments 🏠</h1>
+    <p class="sub" id="t-sub">Choose your language:</p>
+
+    <div class="langs">
+      <button class="lang" data-lang="en">English</button>
+      <button class="lang" data-lang="ru">Русский</button>
+      <button class="lang" data-lang="de">Deutsch</button>
+      <button class="lang" data-lang="it">Italiano</button>
+      <button class="lang" data-lang="ar">العربية</button>
+    </div>
+
+    <div class="card">
+      <p id="t-line1">Welcome! Your site is up and running on GitHub Pages.</p>
+      <p id="t-line2">This is a simple landing page with a language switcher.</p>
+      <a id="t-cta" href="#" class="cta">Learn more</a>
+    </div>
+
+    <p class="tip" id="t-tip">Tip: your language is stored in your browser (localStorage).</p>
   </div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-inner">
-      <h1 id="heroTitle">Welcome to Apartments 🏝️</h1>
-      <p id="heroSubtitle">Sea • Palm trees • Comfort — your stay at Amwaj.</p>
-    </div>
-  </header>
+<script>
+const i18n = {
+  en:{ title:"Welcome to Apartments 🏠",
+       sub:"Choose your language:",
+       l1:"Welcome! Your site is up and running on GitHub Pages.",
+       l2:"This is a simple landing page with a language switcher.",
+       cta:"Learn more", tip:"Tip: your language is stored in your browser (localStorage).", dir:"ltr" },
+  ru:{ title:"Добро пожаловать в Apartments 🏠",
+       sub:"Выберите язык:",
+       l1:"Сайт работает на GitHub Pages.",
+       l2:"Это простая главная страница с переключателем языка.",
+       cta:"Подробнее", tip:"Подсказка: выбранный язык сохраняется в браузере (localStorage).", dir:"ltr" },
+  de:{ title:"Willkommen bei Apartments 🏠",
+       sub:"Wähle deine Sprache:",
+       l1:"Deine Website läuft auf GitHub Pages.",
+       l2:"Dies ist eine einfache Startseite mit Sprachumschalter.",
+       cta:"Mehr erfahren", tip:"Hinweis: Die Sprache wird im Browser gespeichert (localStorage).", dir:"ltr" },
+  it:{ title:"Benvenuto su Apartments 🏠",
+       sub:"Scegli la lingua:",
+       l1:"Il tuo sito è online su GitHub Pages.",
+       l2:"Questa è una semplice pagina iniziale con selettore della lingua.",
+       cta:"Scopri di più", tip:"Suggerimento: la lingua è salvata nel browser (localStorage).", dir:"ltr" },
+  ar:{ title:"مرحبًا بكم في الشقق 🏠",
+       sub:"اختر لغتك:",
+       l1:"موقعك يعمل على GitHub Pages.",
+       l2:"هذه صفحة ترحيبية بسيطة مع مُبدّل للغة.",
+       cta:"اعرف المزيد", tip:"تلميح: يتم حفظ اللغة في المتصفح (localStorage).", dir:"rtl" }
+};
 
-  <!-- Content -->
-  <main class="wrap">
-    <section class="card" id="about">
-      <p class="lead" id="lead">Choose your language below. The content updates instantly.</p>
-      <div class="content" id="content"></div>
-      <a class="cta" id="cta" href="#about">Learn more</a>
-      <footer id="foot"></footer>
-    </section>
-  </main>
+const els = {
+  title:document.getElementById('t-title'),
+  sub:document.getElementById('t-sub'),
+  l1:document.getElementById('t-line1'),
+  l2:document.getElementById('t-line2'),
+  cta:document.getElementById('t-cta'),
+  tip:document.getElementById('t-tip'),
+  langBtns:[...document.querySelectorAll('.lang')]
+};
 
-  <script>
-    const T = {
-      en:{
-        heroTitle:"Welcome to Apartments 🏝️",
-        heroSubtitle:"Sea • Palm trees • Comfort — your stay at Amwaj.",
-        lead:"Choose your language below. The content updates instantly.",
-        paragraphs:[
-          "Welcome! Your site is up and running on GitHub Pages.",
-          "This is a simple landing page with a language switcher."
-        ],
-        cta:"Learn more",
-        foot:"Tip: your language is stored in your browser (localStorage)."
-      },
-      ru:{
-        heroTitle:"Добро пожаловать в Apartments 🏝️",
-        heroSubtitle:"Море • Пальмы • Комфорт — ваше проживание в Amwaj.",
-        lead:"Ниже выберите язык. Контент меняется мгновенно.",
-        paragraphs:[
-          "Отлично! Сайт уже работает на GitHub Pages.",
-          "Это простой лендинг с переключателем языка."
-        ],
-        cta:"Узнать больше",
-        foot:"Подсказка: выбранный язык сохраняется в браузере (localStorage)."
-      },
-      de:{
-        heroTitle:"Willkommen bei Apartments 🏝️",
-        heroSubtitle:"Meer • Palmen • Komfort — Ihr Aufenthalt im Amwaj.",
-        lead:"Wählen Sie unten eine Sprache. Die Inhalte aktualisieren sich sofort.",
-        paragraphs:[
-          "Super! Ihre Website läuft auf GitHub Pages.",
-          "Dies ist eine einfache Landingpage mit Sprachumschalter."
-        ],
-        cta:"Mehr erfahren",
-        foot:"Hinweis: Ihre Sprachauswahl wird im Browser gespeichert (localStorage)."
-      },
-      it:{
-        heroTitle:"Benvenuti in Apartments 🏝️",
-        heroSubtitle:"Mare • Palme • Comfort — il tuo soggiorno ad Amwaj.",
-        lead:"Scegli qui sotto la lingua. Il contenuto si aggiorna istantaneamente.",
-        paragraphs:[
-          "Ottimo! Il sito è online su GitHub Pages.",
-          "Questa è una semplice landing con selettore della lingua."
-        ],
-        cta:"Scopri di più",
-        foot:"Suggerimento: la lingua scelta viene salvata nel browser (localStorage)."
-      },
-      ar:{
-        heroTitle:"مرحبًا بكم في الشقق 🏝️",
-        heroSubtitle:"بحر • نخيل • راحة — إقامتك في أمواج.",
-        lead:"اختر اللغة بالأسفل. يتم تحديث المحتوى فورًا.",
-        paragraphs:[
-          "رائع! موقعك يعمل على GitHub Pages.",
-          "هذه صفحة هبوط بسيطة مع مُبدّل للغة."
-        ],
-        cta:"اعرف المزيد",
-        foot:"ملاحظة: يتم حفظ اللغة المختارة في المتصفح (localStorage).",
-        dir:"rtl"
-      }
-    };
+function setLang(code){
+  const t = i18n[code] || i18n.en;
+  document.documentElement.setAttribute('lang', code);
+  document.documentElement.setAttribute('dir', t.dir);
 
-    const els = {
-      pills:[...document.querySelectorAll(".pill")],
-      heroTitle:document.getElementById("heroTitle"),
-      heroSubtitle:document.getElementById("heroSubtitle"),
-      lead:document.getElementById("lead"),
-      content:document.getElementById("content"),
-      cta:document.getElementById("cta"),
-      foot:document.getElementById("foot")
-    };
+  els.title.textContent = t.title;
+  els.sub.textContent   = t.sub;
+  els.l1.textContent    = t.l1;
+  els.l2.textContent    = t.l2;
+  els.cta.textContent   = t.cta;
+  els.tip.textContent   = t.tip;
 
-    function setLang(lang){
-      const d=T[lang]||T.en;
-      document.documentElement.lang=lang;
-      document.documentElement.dir=d.dir||"ltr";
-      els.heroTitle.textContent=d.heroTitle;
-      els.heroSubtitle.textContent=d.heroSubtitle;
-      els.lead.textContent=d.lead;
-      els.content.innerHTML="";
-      d.paragraphs.forEach(t=>{
-        const p=document.createElement("p"); p.textContent=t; els.content.appendChild(p);
-      });
-      els.cta.textContent=d.cta;
-      els.foot.textContent=d.foot;
-      els.pills.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
-      localStorage.setItem("site_lang", lang);
-      const u=new URL(location); u.searchParams.set("lang",lang); history.replaceState(null,"",u);
-    }
+  els.langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===code));
+  localStorage.setItem('lang', code);
+}
 
-    els.pills.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+els.langBtns.forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
 
-    const qLang=new URLSearchParams(location.search).get("lang");
-    const saved=localStorage.getItem("site_lang");
-    setLang(qLang || saved || "en");
-
-    // Плавный скролл к карточке по клику на CTA
-    document.getElementById("cta").addEventListener("click", e=>{
-      const id=e.currentTarget.getAttribute("href"); 
-      if(id && id.startsWith("#")){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:"smooth"}); }
-    });
-  </script>
+setLang(localStorage.getItem('lang') || navigator.language.slice(0,2) || 'en');
+</script>
 </body>
 </html>
