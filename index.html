@@ -1,105 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Apartments</title>
-<style>
-  :root{--brand:#2563eb;--muted:#475569}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f8ff}
-  .wrap{max-width:900px;margin:40px auto;padding:24px;background:#fff;border:1px solid #e5e7eb;border-radius:16px}
-  h1{margin:0 0 6px;font-size:clamp(24px,3.2vw,34px)}
-  .sub{margin:0 0 16px;color:var(--muted)}
-  .langs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
-  button.lang{border:1px solid #dbe2f1;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
-  button.lang.active{background:var(--brand);color:#fff;border-color:var(--brand)}
-  .card{background:#f8faff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
-  .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none}
-  .tip{margin-top:14px;color:var(--muted);font-size:12px}
-  /* RTL когда нужен */
-  [dir="rtl"]{direction:rtl}
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Amwaj Apartments — Guest Info</title>
+<link rel="stylesheet" href="style.css" />
+<meta name="description" content="Amwaj Apartments — guest information, contacts, beach & pools, Wi‑Fi, excursions, transport. Choose your language.">
 </head>
 <body>
-  <div class="wrap">
-    <h1 id="t-title">Welcome to Apartments 🏠</h1>
-    <p class="sub" id="t-sub">Choose your language:</p>
+  <main class="wrap" id="root">
+    <h1>Welcome to Amwaj Apartments 🏠</h1>
+    <p class="sub">Choose your language / Выберите язык / اختر لغتك / Scegli la lingua / Wählen Sie Ihre Sprache</p>
 
     <div class="langs">
-      <button class="lang" data-lang="en">English</button>
-      <button class="lang" data-lang="ru">Русский</button>
-      <button class="lang" data-lang="de">Deutsch</button>
-      <button class="lang" data-lang="it">Italiano</button>
-      <button class="lang" data-lang="ar">العربية</button>
+      <a class="lang" href="en.html">English</a>
+      <a class="lang" href="ru.html">Русский</a>
+      <a class="lang" href="de.html">Deutsch</a>
+      <a class="lang" href="it.html">Italiano</a>
+      <a class="lang" href="ar.html">العربية</a>
     </div>
 
-    <div class="card">
-      <p id="t-line1">Welcome! Your site is up and running on GitHub Pages.</p>
-      <p id="t-line2">This is a simple landing page with a language switcher.</p>
-      <a id="t-cta" href="#" class="cta">Learn more</a>
-    </div>
+    <section class="card">
+      <p>Find everything you need for a comfortable stay: Wi‑Fi, pools, beach access, nearby places, excursions, and transport.</p>
+      <a class="cta" href="en.html">Start in English</a>
+    </section>
 
-    <p class="tip" id="t-tip">Tip: your language is stored in your browser (localStorage).</p>
-  </div>
-
-<script>
-const i18n = {
-  en:{ title:"Welcome to Apartments 🏠",
-       sub:"Choose your language:",
-       l1:"Welcome! Your site is up and running on GitHub Pages.",
-       l2:"This is a simple landing page with a language switcher.",
-       cta:"Learn more", tip:"Tip: your language is stored in your browser (localStorage).", dir:"ltr" },
-  ru:{ title:"Добро пожаловать в Apartments 🏠",
-       sub:"Выберите язык:",
-       l1:"Сайт работает на GitHub Pages.",
-       l2:"Это простая главная страница с переключателем языка.",
-       cta:"Подробнее", tip:"Подсказка: выбранный язык сохраняется в браузере (localStorage).", dir:"ltr" },
-  de:{ title:"Willkommen bei Apartments 🏠",
-       sub:"Wähle deine Sprache:",
-       l1:"Deine Website läuft auf GitHub Pages.",
-       l2:"Dies ist eine einfache Startseite mit Sprachumschalter.",
-       cta:"Mehr erfahren", tip:"Hinweis: Die Sprache wird im Browser gespeichert (localStorage).", dir:"ltr" },
-  it:{ title:"Benvenuto su Apartments 🏠",
-       sub:"Scegli la lingua:",
-       l1:"Il tuo sito è online su GitHub Pages.",
-       l2:"Questa è una semplice pagina iniziale con selettore della lingua.",
-       cta:"Scopri di più", tip:"Suggerimento: la lingua è salvata nel browser (localStorage).", dir:"ltr" },
-  ar:{ title:"مرحبًا بكم في الشقق 🏠",
-       sub:"اختر لغتك:",
-       l1:"موقعك يعمل على GitHub Pages.",
-       l2:"هذه صفحة ترحيبية بسيطة مع مُبدّل للغة.",
-       cta:"اعرف المزيد", tip:"تلميح: يتم حفظ اللغة في المتصفح (localStorage).", dir:"rtl" }
-};
-
-const els = {
-  title:document.getElementById('t-title'),
-  sub:document.getElementById('t-sub'),
-  l1:document.getElementById('t-line1'),
-  l2:document.getElementById('t-line2'),
-  cta:document.getElementById('t-cta'),
-  tip:document.getElementById('t-tip'),
-  langBtns:[...document.querySelectorAll('.lang')]
-};
-
-function setLang(code){
-  const t = i18n[code] || i18n.en;
-  document.documentElement.setAttribute('lang', code);
-  document.documentElement.setAttribute('dir', t.dir);
-
-  els.title.textContent = t.title;
-  els.sub.textContent   = t.sub;
-  els.l1.textContent    = t.l1;
-  els.l2.textContent    = t.l2;
-  els.cta.textContent   = t.cta;
-  els.tip.textContent   = t.tip;
-
-  els.langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===code));
-  localStorage.setItem('lang', code);
-}
-
-els.langBtns.forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
-
-setLang(localStorage.getItem('lang') || navigator.language.slice(0,2) || 'en');
-</script>
+    <p class="tip">Tip: Bookmark the page of your language for quick access.</p>
+  </main>
+  <script>
+    // Пробуем сразу открыть страницу браузерного языка (только при первом заходе)
+    const saved = localStorage.getItem('langPage');
+    if (!saved) {
+      const m = (navigator.language||'en').slice(0,2).toLowerCase();
+      const map = {en:'en.html',ru:'ru.html',de:'de.html',it:'it.html',ar:'ar.html'};
+      if (map[m]) {
+        localStorage.setItem('langPage', map[m]);
+      }
+    }
+    // Кнопкам добавим сохранение выбора
+    document.querySelectorAll('.lang').forEach(a=>{
+      a.addEventListener('click', ()=> localStorage.setItem('langPage', a.getAttribute('href')));
+    });
+  </script>
 </body>
 </html>
