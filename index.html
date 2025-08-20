@@ -3,69 +3,117 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amwaj Apartments — v3</title>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+<title>Amwaj Apartments — v4</title>
+<meta name="description" content="Guest info in 5 languages. Pools, beach, aquapark, nearby places, contacts." />
+<meta name="theme-color" content="#7fc7ff" />
 <style>
-  /* v3 inline styles — никаких внешних файлов */
-  *{box-sizing:border-box;margin:0;padding:0}
+  /* ===== Base ===== */
+  *{box-sizing:border-box}
   html,body{height:100%}
   body{
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     color:#0f172a; line-height:1.55;
-    display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg,#8bd3ff 0%,#64b5f6 50%,#ffe29a 100%) fixed;
+    background:#9ad2ff; /* fallback */
+    overflow-x:hidden;
   }
-  .wrap{width:min(920px,92vw); background:#fff; border:1px solid #e5e7eb; border-radius:22px;
-        padding:28px 22px; box-shadow:0 14px 38px rgba(15,23,42,.12)}
-  h1{margin:0 0 6px; font-size:clamp(28px,4.2vw,44px)}
-  .sub{margin:0 0 18px; color:#6b7280}
-  .langs{display:flex; flex-wrap:wrap; gap:12px; margin:10px 0 20px}
+
+  /* ===== Background slider ===== */
+  .bg{
+    position:fixed; inset:0; z-index:-2; overflow:hidden;
+    background:linear-gradient(180deg,#bfe2ff 0 48%,#98d7f6 48% 62%,#fde9b8 62% 100%);
+  }
+  .bg img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; animation:fade 36s infinite; filter:saturate(1.05) contrast(1.02);
+    transform:scale(1.04); /* лёгкий параллакс */
+  }
+  .bg img:nth-child(1){animation-delay:0s}
+  .bg img:nth-child(2){animation-delay:6s}
+  .bg img:nth-child(3){animation-delay:12s}
+  .bg img:nth-child(4){animation-delay:18s}
+  .bg img:nth-child(5){animation-delay:24s}
+  .bg img:nth-child(6){animation-delay:30s}
+
+  @keyframes fade{
+    0%{opacity:0}
+    8%{opacity:1}
+    25%{opacity:1}
+    33%{opacity:0}
+    100%{opacity:0}
+  }
+
+  /* читаемость поверх фото */
+  .bg::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(1200px 600px at 40% 35%, rgba(255,255,255,.65), rgba(255,255,255,.3) 40%, rgba(0,0,0,.15) 100%);
+    pointer-events:none;
+  }
+
+  /* Reduce motion: показываем 1 фото без анимации */
+  @media (prefers-reduced-motion: reduce){
+    .bg img{animation:none; opacity:0}
+    .bg img:first-child{opacity:1}
+  }
+
+  /* ===== Card ===== */
+  .container{
+    display:grid; place-items:center; min-height:100dvh; padding:28px 16px;
+  }
+  .wrap{
+    width:min(1000px,92vw);
+    backdrop-filter:saturate(1.1) blur(2px);
+    background:rgba(255,255,255,.92);
+    border:1px solid #e5e7eb; border-radius:22px;
+    box-shadow:0 18px 40px rgba(15,23,42,.18);
+    padding:26px 22px;
+  }
+  h1{margin:0 0 6px; font-size:clamp(28px,4.4vw,46px); letter-spacing:.2px}
+  .badge{margin-left:8px; font-size:12px; color:#2563eb; background:#eef2ff; border:1px solid #dbeafe; padding:2px 8px; border-radius:999px}
+  .sub{margin:0 0 16px; color:#6b7280}
+
+  /* ===== Language buttons ===== */
+  .langs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
   .lang{
-    display:inline-flex; align-items:center; justify-content:center;
-    padding:10px 16px; border-radius:999px; font-weight:700; text-decoration:none;
-    border:1px solid #d6e0ff; background:#fff; color:#1f2937;
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;
+    border:1px solid #d6e0ff;background:#fff;color:#1f2937;
     transition:.18s transform,.18s box-shadow,.18s background,.18s color,.18s border-color;
   }
   .lang:hover,.lang:focus-visible{
-    background:#2563eb; color:#fff; border-color:#2563eb;
-    transform:translateY(-1px); box-shadow:0 10px 22px rgba(37,99,235,.22); outline:3px solid #c7d2fe
+    background:#2563eb;color:#fff;border-color:#2563eb;
+    transform:translateY(-1px);box-shadow:0 10px 22px rgba(37,99,235,.22);outline:3px solid #c7d2fe
   }
+
+  /* ===== Info card ===== */
   .card{background:#f8faff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}
   .cta{display:inline-block;margin-top:14px;padding:12px 18px;border-radius:12px;background:#10b981;color:#fff;text-decoration:none;font-weight:700}
-  .tip{margin-top:12px;color:#6b7280;font-size:12px}
-  .badge{margin-left:8px; font-size:12px; color:#2563eb; background:#eef2ff; border:1px solid #dbeafe; padding:2px 8px; border-radius:999px}
+  .cta:hover{filter:brightness(.95)}
+  .tip{margin-top:10px;color:#6b7280;font-size:12px}
+
+  /* small screens */
+  @media (max-width:560px){
+    .wrap{padding:18px}
+  }
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>Welcome to Amwaj Apartments <span class="badge">v3</span> 🏝</h1>
-    <p class="sub">Choose your language / Выберите язык / اختر لغتك / Scegli la lingua / Wählen Sie Ihre Sprache</p>
+  <!-- Background slider -->
+  <div class="bg" aria-hidden="true">
+    <img src="IMG_6054.jpeg" alt="">
+    <img src="IMG_7458.jpeg" alt="">
+    <img src="IMG_4414.jpeg" alt="">
+    <img src="RRR50384641.JPG" alt="">
+    <img src="11.jpg" alt="">
+    <img src="IMG_7457.jpeg" alt="">
+  </div>
 
-    <nav class="langs" aria-label="Languages">
-      <a class="lang" href="en.html">English</a>
-      <a class="lang" href="ru.html">Русский</a>
-      <a class="lang" href="de.html">Deutsch</a>
-      <a class="lang" href="it.html">Italiano</a>
-      <a class="lang" href="ar.html">العربية</a>
-    </nav>
+  <!-- Content -->
+  <div class="container">
+    <main class="wrap" role="region" aria-label="Language selection">
+      <h1>Welcome to Amwaj Apartments <span class="badge">v4</span> 🏝</h1>
+      <p class="sub">Choose your language / Выберите язык / اختر لغتك / Scegli la lingua / Wählen Sie Ihre Sprache</p>
 
-    <section class="card">
-      <p>Find everything you need for a comfortable stay: Wi‑Fi, pools, beach access, nearby places, excursions, and transport.</p>
-      <a class="cta" id="cta" href="en.html">Start in English</a>
-      <p class="tip">Tip: we’ll remember your language on this device.</p>
-    </section>
-  </main>
-
-  <script>
-    // запоминаем последний язык для CTA
-    document.querySelectorAll('.lang').forEach(a=>{
-      a.addEventListener('click', ()=> localStorage.setItem('langPage', a.getAttribute('href')));
-    });
-    const saved = localStorage.getItem('langPage');
-    if (saved && saved.endsWith('.html')) document.getElementById('cta').href = saved;
-  </script>
-</body>
-</html>
+      <nav class="langs" aria-label="Languages">
+        <a class="lang" href="en.html" data-lang="en" aria-label="English">English</a>
+        <a class="lang" href="ru.html" data-lang="ru" aria-label="Р
 
