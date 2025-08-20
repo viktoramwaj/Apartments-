@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apartments</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    .lang-btn { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Welcome to Apartments 🏠</h1>
+  <p id="subtitle">Choose your language:</p>
+
+  <!-- Кнопки переключения языков -->
+  <button class="lang-btn" data-lang="en">English</button>
+  <button class="lang-btn" data-lang="ru">Русский</button>
+  <button class="lang-btn" data-lang="de">Deutsch</button>
+  <button class="lang-btn" data-lang="fr">Français</button>
+
+  <p id="text"></p>
+
+  <script>
+    const texts = {
+      en: "Welcome! This is the English version of the site.",
+      ru: "Добро пожаловать! Это русская версия сайта.",
+      de: "Willkommen! Dies ist die deutsche Version der Website.",
+      fr: "Bienvenue! Ceci est la version française du site."
+    };
+
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const text = document.getElementById("text");
+    const buttons = document.querySelectorAll(".lang-btn");
+
+    function setLang(lang) {
+      if (lang === "en") {
+        title.textContent = "Welcome to Apartments 🏠";
+        subtitle.textContent = "Choose your language:";
+      } else if (lang === "ru") {
+        title.textContent = "Добро пожаловать в Apartments 🏠";
+        subtitle.textContent = "Выберите язык:";
+      } else if (lang === "de") {
+        title.textContent = "Willkommen bei Apartments 🏠";
+        subtitle.textContent = "Wählen Sie eine Sprache:";
+      } else if (lang === "fr") {
+        title.textContent = "Bienvenue aux Apartments 🏠";
+        subtitle.textContent = "Choisissez votre langue:";
+      }
+      text.textContent = texts[lang];
+    }
+
+    // Язык по умолчанию — английский
+    setLang("en");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => setLang(button.dataset.lang));
+    });
+  </script>
+</body>
+</html>
