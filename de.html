@@ -4,67 +4,30 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Amwaj Apartments — Gästeinformation</title>
-<meta name="description" content="Wichtige Gästeinfos für Amwaj Apartments: Apartments, Freizeit, Wi‑Fi, Medizin, Ausflüge, Transport." />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --text:#0f172a; --muted:#4b5563; --border:rgba(255,255,255,.6);
-    --card-bg:rgba(255,255,255,.86); --shadow:0 8px 26px rgba(15,23,42,.18);
-    --brand:#2563eb; --brand-dark:#1e40af;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
+  :root{--text:#0f172a;--muted:#4b5563;--border:rgba(255,255,255,.6);--card-bg:rgba(255,255,255,.86);--shadow:0 8px 26px rgba(15,23,42,.18);--brand:#2563eb;--brand-dark:#1e40af}
+  *{box-sizing:border-box} html,body{height:100%}
   body{
-    margin:0; font-family:"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin:0; font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     color:var(--text); line-height:1.6; overflow-x:hidden;
     display:flex; flex-direction:column; min-height:100dvh;
+    background:url('12.jpg') center/cover no-repeat fixed;
   }
-
-  /* ===== Background image (12.jpg) + readability layers ===== */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-2;
-    background:url('12.jpg') center/cover no-repeat;
-    opacity:.30;            /* сама картинка ~30% видимости */
-  }
-  body::after{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:radial-gradient(1000px 600px at 50% 10%, rgba(255,255,255,.55), rgba(255,255,255,.25) 55%, rgba(255,255,255,.10) 100%);
-    /* мягкий светлый ореол для читабельности поверх фото */
-  }
-
-  /* ===== Layout ===== */
-  header{
-    text-align:center; padding:24px 16px 10px;
-  }
-  header h1{ margin:0 0 6px; font-size:clamp(24px,4.2vw,36px)}
-  header .sub{ margin:0; color:var(--muted)}
-  main{ width:min(920px,92vw); margin:0 auto; padding:10px 0 24px; flex:1}
-  .grid{ display:grid; gap:14px }
-
-  .card{
-    background:var(--card-bg); border:1px solid var(--border);
-    border-radius:16px; padding:16px 18px; box-shadow:var(--shadow);
-  }
-  .card h2{ margin:0 0 8px; font-size:clamp(18px,2.6vw,22px) }
-  .card p{ margin:0 }
-
-  /* Change language button */
-  .back{
-    display:inline-block; margin:18px auto 26px; padding:10px 16px;
-    border-radius:12px; text-decoration:none; font-weight:600;
-    background:var(--brand); color:#fff; border:1px solid #dbeafe;
-    box-shadow:0 10px 20px rgba(37,99,235,.20);
-  }
-  .back:hover{ background:var(--brand-dark) }
-
-  @media (max-width:560px){
-    header{padding:18px 12px 6px}
-    .card{padding:14px 14px}
-  }
+  header{text-align:center;padding:24px 16px 10px}
+  header h1{margin:0 0 6px;font-size:clamp(24px,4.2vw,36px)}
+  header .sub{margin:0;color:var(--muted)}
+  main{width:min(920px,92vw);margin:0 auto;padding:10px 0 24px;flex:1}
+  .grid{display:grid;gap:14px}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+  .card h2{margin:0 0 8px;font-size:clamp(18px,2.6vw,22px)}
+  .card p{margin:0}
+  .back{display:inline-block;margin:18px auto 26px;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;background:var(--brand);color:#fff;border:1px solid #dbeafe;box-shadow:0 10px 20px rgba(37,99,235,.20)}
+  .back:hover{background:var(--brand-dark)}
+  @media (max-width:560px){header{padding:18px 12px 6px}.card{padding:14px 14px}}
 </style>
 </head>
 <body>
-
   <header>
     <h1>Amwaj Apartments 🏖️</h1>
     <p class="sub">Gästeinformation (Deutsch)</p>
@@ -72,84 +35,57 @@
 
   <main>
     <div class="grid">
-      <section class="card" id="apartments">
-        <h2>🏠 Apartments</h2>
-        <p>
-          Küche: Herd, Kühlschrank, Wasserkocher, Mikrowelle.<br>
-          Geschirr: Teller, Gläser, Tassen, Töpfe, Pfannen, Besteck.<br>
-          Kostenpflichtige Dienstleistungen: Reinigung, Bettwäschewechsel.
-        </p>
-      </section>
+      <section class="card"><h2>🏠 Apartments</h2><p>
+        Küche: Herd, Kühlschrank, Wasserkocher, Mikrowelle.<br>
+        Geschirr: Teller, Gläser, Tassen, Töpfe, Pfannen, Besteck.<br>
+        Kostenpflichtige Dienstleistungen: Reinigung, Bettwäschewechsel.
+      </p></section>
 
-      <section class="card" id="leisure">
-        <h2>🏖️ Freizeit & Unterhaltung</h2>
-        <p>
-          Schwimmbäder: nutzbar im Apartmentkomplex. Hotelpools sind verboten, außer mit All‑Inclusive‑Armband (an der Rezeption).<br>
-          Aquapark: kostenlos für Apartmentgäste.<br>
-          Strand: privat, kostenlos mit Liegen und Sonnenschirmen.
-        </p>
-      </section>
+      <section class="card"><h2>🏖️ Freizeit & Unterhaltung</h2><p>
+        Schwimmbäder: nutzbar im Apartmentkomplex. Hotelpools sind verboten, außer mit All‑Inclusive‑Armband (an der Rezeption).<br>
+        Aquapark: kostenlos für Apartmentgäste.<br>
+        Strand: privat, kostenlos mit Liegen und Sonnenschirmen.
+      </p></section>
 
-      <section class="card" id="nearby">
-        <h2>🛍️ Empfohlene Orte in der Nähe</h2>
-        <p>
-          🍽 Restaurant — Arab Bucks<br>
-          🍽 Restaurant — El Masrien (Fleisch‑Restaurantkette)<br>
-          🛒 Markt — All In (5 Min. zu Fuß), Metro (15 Min. zu Fuß)<br>
-          💊 Apotheke — am Hoteleingang und gegenüber
-        </p>
-      </section>
+      <section class="card"><h2>🛍️ Empfohlene Orte in der Nähe</h2><p>
+        🍽 Restaurant — Arab Bucks<br>
+        🍽 Restaurant — El Masrien (Fleisch‑Restaurantkette)<br>
+        🛒 Markt — All In (5 Min. zu Fuß), Metro (15 Min. zu Fuß)<br>
+        💊 Apotheke — am Hoteleingang und gegenüber
+      </p></section>
 
-      <section class="card" id="wifi">
-        <h2>🌐 WLAN & Ausstattung</h2>
-        <p>
-          WLAN: QR‑Codes an der Tür und am Fernseher.<br>
-          TV: Satellit Hot Bird, YouTube / Netflix.<br>
-          Klimaanlagen in jedem Zimmer (Wandpanel oder Fernbedienung). Empfohlene Temperatur: 27 °C.<br>
-          Waschmaschine: einfache, visuelle Bedienung.
-        </p>
-      </section>
+      <section class="card"><h2>🌐 WLAN & Ausstattung</h2><p>
+        WLAN: QR‑Codes an der Tür und am Fernseher.<br>
+        TV: Satellit Hot Bird, YouTube / Netflix.<br>
+        Klimaanlagen in jedem Zimmer (Wandpanel oder Fernbedienung). Empfohlene Temperatur: 27 °C.<br>
+        Waschmaschine: einfache, visuelle Bedienung.
+      </p></section>
 
-      <section class="card" id="medical">
-        <h2>🚑 Medizinische Hilfe</h2>
-        <p>
-          Nächste Apotheke: am Hoteleingang und gegenüber.<br>
-          Nächste Klinik: Sinay Clinic (Straße überqueren, 30 m gehen).
-        </p>
-      </section>
+      <section class="card"><h2>🚑 Medizinische Hilfe</h2><p>
+        Nächste Apotheke: am Hoteleingang und gegenüber.<br>
+        Nächste Klinik: Sinay Clinic (Straße überqueren, 30 m gehen).
+      </p></section>
 
-      <section class="card" id="tours">
-        <h2>🌋 Ausflüge</h2>
-        <p>
-          Beliebt: Ras Mohammed, Coloured Canyon, Quad‑Touren, Tauchen/Schnorcheln.<br>
-          An der Hotelrezeption buchen — keine Straßenverkäufer.
-        </p>
-      </section>
+      <section class="card"><h2>🌋 Ausflüge</h2><p>
+        Beliebt: Ras Mohammed, Coloured Canyon, Quad‑Touren, Tauchen/Schnorcheln.<br>
+        An der Hotelrezeption buchen — keine Straßenverkäufer.
+      </p></section>
 
-      <section class="card" id="transport">
-        <h2>🚖 Transport</h2>
-        <p>
-          Taxi‑ und Bushaltestellen am Hoteleingang.<br>
-          Minibus: 25 EGP (≈ 0,50 $), fährt durch die ganze Stadt.<br>
-          Taxi: ca. 0,50–1 $ pro km.<br>
-          Flughafentransfer möglich.
-        </p>
-      </section>
+      <section class="card"><h2>🚖 Transport</h2><p>
+        Taxi‑ und Bushaltestellen am Hoteleingang.<br>
+        Minibus: 25 EGP (≈ 0,50 $), fährt durch die ganze Stadt.<br>
+        Taxi: ca. 0,50–1 $ pro km.<br>
+        Wir können einen Flughafentransfer organisieren.
+      </p></section>
 
-      <section class="card" id="contacts">
-        <h2>📞 Kontakte</h2>
-        <p>
-          Herr Sherif: +20 109 617 6893 (Arabisch)<br>
-          Herr Victor (WhatsApp): +34 673 567 996 (Englisch, Spanisch, Russisch)<br>
-          Erreichbar: 09:00–24:00
-        </p>
-      </section>
+      <section class="card"><h2>📞 Kontakte</h2><p>
+        Herr Sherif: +20 109 617 6893 (Arabisch)<br>
+        Herr Victor (WhatsApp): +34 673 567 996 (Englisch, Spanisch, Russisch)<br>
+        Erreichbar: 09:00–24:00
+      </p></section>
     </div>
 
-    <p style="text-align:center">
-      <a class="back" href="index.html">🌍 Change language</a>
-    </p>
+    <p style="text-align:center"><a class="back" href="index.html">🌍 Sprache ändern</a></p>
   </main>
-
 </body>
 </html>

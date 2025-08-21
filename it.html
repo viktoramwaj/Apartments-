@@ -2,72 +2,91 @@
 <html lang="it">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amwaj Apartments — Informazioni per gli ospiti (IT)</title>
-<link rel="stylesheet" href="style.css" />
-<meta name="description" content="Informazioni per gli ospiti: Wi‑Fi, piscine, spiaggia, luoghi vicini, escursioni, trasporti, contatti.">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amwaj Apartments — Informazioni per gli ospiti</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--text:#0f172a;--muted:#4b5563;--border:rgba(255,255,255,.6);--card-bg:rgba(255,255,255,.86);--shadow:0 8px 26px rgba(15,23,42,.18);--brand:#2563eb;--brand-dark:#1e40af}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{
+    margin:0; font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--text); line-height:1.6; overflow-x:hidden;
+    display:flex; flex-direction:column; min-height:100dvh;
+    background:url('12.jpg') center/cover no-repeat fixed;
+  }
+  header{text-align:center;padding:24px 16px 10px}
+  header h1{margin:0 0 6px;font-size:clamp(24px,4.2vw,36px)}
+  header .sub{margin:0;color:var(--muted)}
+  main{width:min(920px,92vw);margin:0 auto;padding:10px 0 24px;flex:1}
+  .grid{display:grid;gap:14px}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+  .card h2{margin:0 0 8px;font-size:clamp(18px,2.6vw,22px)}
+  .card p{margin:0}
+  .back{display:inline-block;margin:18px auto 26px;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;background:var(--brand);color:#fff;border:1px solid #dbeafe;box-shadow:0 10px 20px rgba(37,99,235,.20)}
+  .back:hover{background:var(--brand-dark)}
+  @media (max-width:560px){header{padding:18px 12px 6px}.card{padding:14px 14px}}
+</style>
 </head>
 <body>
-<main class="wrap" dir="ltr">
-  <h1>Amwaj Apartments — Informazioni per gli ospiti <span class="badge">IT</span></h1>
-  <a class="back" href="index.html">← Torna alla pagina principale</a>
+  <header>
+    <h1>Amwaj Apartments 🏖️</h1>
+    <p class="sub">Informazioni per gli ospiti</p>
+  </header>
 
-  <section class="card">
-    <h3>1. Appartamenti</h3>
-    <ul>
-      <li><strong>Cucina:</strong> fornello, frigorifero, bollitore, microonde.</li>
-      <li><strong>Stoviglie:</strong> piatti, bicchieri, tazze, pentole, padelle, posate.</li>
-      <li><strong>Servizi a pagamento:</strong> pulizia, cambio biancheria.</li>
-    </ul>
+  <main>
+    <div class="grid">
+      <section class="card"><h2>🏠 Appartamenti</h2><p>
+        Cucina: fornello, frigorifero, bollitore, microonde.<br>
+        Stoviglie: piatti, bicchieri, tazze, pentole, padelle, posate.<br>
+        Servizi a pagamento: pulizia, cambio biancheria.
+      </p></section>
 
-    <h3>2. Relax e divertimento</h3>
-    <ul>
-      <li><strong>Piscine:</strong> disponibili nel complesso. Piscine dell’hotel vietate, tranne con braccialetto All Inclusive.</li>
-      <li><strong>Acquapark:</strong> gratuito per gli ospiti degli appartamenti.</li>
-      <li><strong>Spiaggia:</strong> privata, gratuita, con lettini e ombrelloni.</li>
-    </ul>
+      <section class="card"><h2>🏖️ Relax e divertimento</h2><p>
+        Piscine: disponibili nel complesso. Piscine dell’hotel vietate, tranne con braccialetto All Inclusive (in reception).<br>
+        Acquapark: gratuito per gli ospiti degli appartamenti.<br>
+        Spiaggia: privata, gratuita, con lettini e ombrelloni.
+      </p></section>
 
-    <h3>3. Luoghi consigliati</h3>
-    <ul>
-      <li>🍽 Ristorante — Arab Bucks</li>
-      <li>🍽 Ristorante — El Masrien (catena di carne)</li>
-      <li>🛒 Market — All In (5 min a piedi), Metro (15 min a piedi)</li>
-      <li>💊 Farmacia — all’ingresso dell’hotel e di fronte all’hotel</li>
-    </ul>
+      <section class="card"><h2>🛍️ Luoghi consigliati</h2><p>
+        🍽 Ristorante — Arab Bucks<br>
+        🍽 Ristorante — El Masrien (catena di carne)<br>
+        🛒 Market — All In (5 min a piedi), Metro (15 min a piedi)<br>
+        💊 Farmacia — all’ingresso dell’hotel e di fronte
+      </p></section>
 
-    <h3>4. Wi‑Fi & Attrezzature</h3>
-    <ul>
-      <li><strong>Wi‑Fi:</strong> QR vicino alla porta e alla TV.</li>
-      <li><strong>TV:</strong> satellite Hot Bird, YouTube / Netflix.</li>
-      <li><strong>Aria condizionata</strong> in ogni stanza (pannello a muro o telecomando). 27°C consigliati.</li>
-      <li><strong>Lavatrice:</strong> comandi semplici e visivi.</li>
-    </ul>
+      <section class="card"><h2>🌐 Wi‑Fi & Attrezzature</h2><p>
+        Wi‑Fi: QR vicino alla porta e alla TV.<br>
+        TV: satellite Hot Bird, YouTube / Netflix.<br>
+        Aria condizionata in ogni stanza (pannello a muro o telecomando). Temperatura consigliata: 27 °C.<br>
+        Lavatrice: comandi semplici e visivi.
+      </p></section>
 
-    <h3>5. Medicina</h3>
-    <ul>
-      <li>Farmacia più vicina: ingresso hotel e di fronte.</li>
-      <li>Clinica più vicina: Sinay Clinic (attraversare la strada e camminare 30 m).</li>
-    </ul>
+      <section class="card"><h2>🚑 Medicina</h2><p>
+        Farmacia più vicina: ingresso hotel e di fronte.<br>
+        Clinica più vicina: Sinay Clinic (attraversare la strada e camminare 30 m).
+      </p></section>
 
-    <h3>6. Escursioni</h3>
-    <ul>
-      <li>Popolari: Ras Mohammed, Canyon Colorato, quad, immersioni/snorkeling.</li>
-      <li>Prenotare alla reception — no venditori di strada.</li>
-    </ul>
+      <section class="card"><h2>🌋 Escursioni</h2><p>
+        Popolari: Ras Mohammed, Canyon Colorato, quad, immersioni/snorkeling.<br>
+        Prenotare alla reception — non acquistare da venditori di strada.
+      </p></section>
 
-    <h3>7. Trasporti</h3>
-    <ul>
-      <li>Fermate taxi e bus vicino all’ingresso.</li>
-      <li>Minibus: 25 EGP (~0,50 $), attraversa tutta la città.</li>
-      <li>Taxi: circa 0,50–1 $/km.</li>
-      <li>Possiamo organizzare transfer aeroporto.</li>
-    </ul>
+      <section class="card"><h2>🚖 Trasporti</h2><p>
+        Fermate taxi e bus vicino all’ingresso.<br>
+        Minibus: 25 EGP (~0,50 $), attraversa tutta la città.<br>
+        Taxi: circa 0,50–1 $ al km.<br>
+        Possiamo organizzare transfer per l’aeroporto.
+      </p></section>
 
-    <h3>Contatti</h3>
-    <p>Sig. Sherif: +20 109 6176893 (Arabo)<br>
-       Sig. Victor (WhatsApp): +34 673 567 996 (Inglese, Spagnolo, Russo)<br>
-       Orari: 09:00–24:00</p>
-  </section>
-</main>
+      <section class="card"><h2>📞 Contatti</h2><p>
+        Sig. Sherif: +20 109 617 6893 (Arabo)<br>
+        Sig. Victor (WhatsApp): +34 673 567 996 (Inglese, Spagnolo, Russo)<br>
+        Orari: 09:00–24:00
+      </p></section>
+    </div>
+
+    <p style="text-align:center"><a class="back" href="index.html">🌍 Cambia lingua</a></p>
+  </main>
 </body>
 </html>
+
