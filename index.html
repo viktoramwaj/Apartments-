@@ -3,137 +3,28 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amwaj Apartments — v9</title>
-<meta name="description" content="Guest info in 5 languages for Amwaj Apartments: beach, pools, aquapark, nearby places, contacts." />
-<meta name="theme-color" content="#7fc7ff" />
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  /* ===== Base ===== */
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    color:#0f172a; line-height:1.6; background:#9ad2ff; overflow-x:hidden;
-  }
-
-  /* ===== Background slider ===== */
-  .bg{
-    position:fixed; inset:0; z-index:-2; overflow:hidden;
-    background:linear-gradient(180deg,#bfe2ff 0 48%,#98d7f6 48% 62%,#fde9b8 62% 100%);
-  }
-  .bg img{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    opacity:0; animation:fade 36s infinite; filter:saturate(1.05) contrast(1.02);
-    transform:scale(1.04);
-  }
-  .bg img:nth-child(1){animation-delay:0s}
-  .bg img:nth-child(2){animation-delay:6s}
-  .bg img:nth-child(3){animation-delay:12s}
-  .bg img:nth-child(4){animation-delay:18s}
-  .bg img:nth-child(5){animation-delay:24s}
-  .bg img:nth-child(6){animation-delay:30s}
-  @keyframes fade{0%{opacity:0}8%{opacity:1}25%{opacity:1}33%{opacity:0}100%{opacity:0}}
-  /* readable aura over photos */
-  .bg::after{
-    content:""; position:absolute; inset:0;
-    background:radial-gradient(1200px 620px at 50% 18%, rgba(255,255,255,.70), rgba(255,255,255,.18) 60%, rgba(0,0,0,.20) 100%);
-    pointer-events:none;
-  }
-  @media (prefers-reduced-motion:reduce){
-    .bg img{animation:none; opacity:0}
-    .bg img:first-child{opacity:1}
-  }
-
-  /* ===== Center glass card ===== */
-  .center{
-    min-height:100dvh; display:grid; place-items:center; padding:28px 16px 120px; /* space for dock */
-  }
-  .card{
-    width:min(1000px,92vw);
-    background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.78));
-    border:1px solid rgba(255,255,255,.6);
-    border-radius:24px;
-    padding:28px 24px;
-    box-shadow:0 18px 44px rgba(15,23,42,.18);
-    backdrop-filter:saturate(1.15) blur(6px);
-    text-align:center;
-  }
-  h1{
-    margin:0 0 8px;
-    font-size:clamp(28px,4.5vw,48px);
-    letter-spacing:.2px;
-  }
-  .sub{
-    margin:0; color:#42526b; opacity:.9; font-size:clamp(14px,2vw,16px);
-  }
-
-  /* ===== Bottom language dock ===== */
-  .dock{
-    position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
-    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-    width:min(96vw,980px);
-    padding:12px;
-    background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));
-    border:1px solid rgba(229,231,235,.9);
-    border-radius:18px;
-    box-shadow:0 16px 36px rgba(15,23,42,.22);
-    backdrop-filter:saturate(1.15) blur(6px);
-  }
-  .lang{
-    --bg:#ffffff; --bd:#dbeafe; --txt:#0f172a;
-    display:inline-flex; align-items:center; justify-content:center;
-    padding:10px 18px; border-radius:999px; text-decoration:none; font-weight:700;
-    background:linear-gradient(180deg,var(--bg),#f9fbff);
-    border:1px solid var(--bd); color:var(--txt);
-    transition:.18s transform,.18s box-shadow,.18s background,.18s color,.18s border-color;
-  }
-  .lang:hover,.lang:focus-visible{
-    background:linear-gradient(180deg,#2563eb,#1d4ed8);
-    color:#fff; border-color:#1d4ed8; transform:translateY(-1px);
-    box-shadow:0 10px 22px rgba(37,99,235,.26); outline:none;
-  }
-
-  /* small screens */
-  @media (max-width:560px){
-    .card{padding:20px 16px}
-    .dock{padding:10px}
-    .lang{padding:10px 14px; font-weight:600}
-    .sub{display:none} /* больше места для фото */
-  }
-</style>
+<title>Amwaj Apartments</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background slider (use your images in repo root) -->
-  <div class="bg" aria-hidden="true">
-    <img src="IMG_6054.jpeg" alt="">
-    <img src="IMG_7458.jpeg" alt="">
-    <img src="IMG_4414.jpeg" alt="">
-    <img src="RRR50384641.JPG" alt="">
-    <img src="11.jpg" alt="">
-    <img src="IMG_7457.jpeg" alt="">
-  </div>
+  <div class="background-slider"></div>
 
-  <!-- Center glass card -->
-  <main class="center">
-    <section class="card" aria-label="Welcome">
+  <main class="wrap">
+    <div class="card glass">
       <h1>Welcome to Amwaj Apartments 🏝️</h1>
-      <p class="sub">Choose your language / Выберите язык / اختر لغتك / Scegli la lingua / Wählen Sie Ihre Sprache</p>
-    </section>
+      <p>Choose your language to continue</p>
+    </div>
   </main>
 
-  <!-- Bottom dock with language buttons -->
-  <nav class="dock" aria-label="Languages">
-    <a class="lang" href="en.html" aria-label="English">English</a>
-    <a class="lang" href="ru.html" aria-label="Русский">Русский</a>
-    <a class="lang" href="de.html" aria-label="Deutsch">Deutsch</a>
-    <a class="lang" href="it.html" aria-label="Italiano">Italiano</a>
-    <a class="lang" href="ar.html" aria-label="العربية">العربية</a>
-  </nav>
-
-  <script>
-    // Pre-decode images to reduce first fade flash
-    document.querySelectorAll('.bg img').forEach(img=>{ if('decode' in img) img.decode().catch(()=>{}); });
-  </script>
+  <footer>
+    <nav class="langs">
+      <a class="lang" href="en.html">English</a>
+      <a class="lang" href="ru.html">Русский</a>
+      <a class="lang" href="de.html">Deutsch</a>
+      <a class="lang" href="it.html">Italiano</a>
+      <a class="lang" href="ar.html">العربية</a>
+    </nav>
+  </footer>
 </body>
 </html>
